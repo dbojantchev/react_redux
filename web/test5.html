@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 1</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/require.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script>
+
+        var App = require('js/components/App2');
+        App();
+
+        /*
+         ReactDOM.render(
+         <App/>,
+         document.getElementById("app")
+         );
+         */
+
+    </script>
+
+</head>
+<body>
+
+<div id="app">
+    <div id="nav"></div>
+
+    <div>Foo</div>
+</div>
+
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>

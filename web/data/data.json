@@ -1,0 +1,27 @@
+[
+  {
+    "type": "number",
+    "description": "Product identifier",
+    "required": true
+  },
+  {
+    "description": "Name of the product",
+    "type": "string",
+    "required": true
+  },
+  {
+    "type": "number",
+    "minimum": "0",
+    "required": true
+  },
+  {
+    "type": "int",
+    "minimum": "100",
+    "required": false
+  },
+  {
+    "type": "date",
+    "minimum": "1970-01-01",
+    "required": "true"
+  }
+]
