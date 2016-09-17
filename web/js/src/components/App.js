@@ -72,19 +72,49 @@ ReactDom.render(
     document.getElementById("nav")
 );
 
-ReactDom.render(
-    <TileContainer url="./data/devices.json"/>,
+var TileContainer1 = ReactDom.render(
+    <TileContainer/>,
     document.getElementById("tileContainer1")
 );
 
-ReactDom.render(
+var TileContainer2 = ReactDom.render(
     <TileContainer url="./data/coord.json"/>,
     document.getElementById("tileContainer2")
 );
 
-ReactDom.render(
+var TileContainer3 = ReactDom.render(
     <TileContainer url="./data/data.json"/>,
     document.getElementById("tileContainer3")
 );
+
+function getData(url, cb){
+
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            if(cb){
+                cb(data);
+            }
+        }.bind(this),
+        error: function (xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+        }.bind(this)
+    });
+}
+
+getData('./data/devices.json', function(data){
+    console.log(data);
+    TileContainer1.setState({data: data});
+});
+
+setTimeout(function(){
+    getData('./data/devices.json', function(data){
+        console.log(data);
+        TileContainer2.setState({data: data});
+    });
+}, 5000);
+
 
 export default App

@@ -20671,11 +20671,40 @@ var App = _react2.default.createClass({
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById("nav"));
 
-_reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, { url: './data/devices.json' }), document.getElementById("tileContainer1"));
+var TileContainer1 = _reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, null), document.getElementById("tileContainer1"));
 
-_reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, { url: './data/coord.json' }), document.getElementById("tileContainer2"));
+var TileContainer2 = _reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, { url: './data/coord.json' }), document.getElementById("tileContainer2"));
 
-_reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, { url: './data/data.json' }), document.getElementById("tileContainer3"));
+var TileContainer3 = _reactDom2.default.render(_react2.default.createElement(_TileContainer2.default, { url: './data/data.json' }), document.getElementById("tileContainer3"));
+
+function getData(url, cb) {
+
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            if (cb) {
+                cb(data);
+            }
+        }.bind(this),
+        error: function (xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+        }.bind(this)
+    });
+}
+
+getData('./data/devices.json', function (data) {
+    console.log(data);
+    TileContainer1.setState({ data: data });
+});
+
+setTimeout(function () {
+    getData('./data/devices.json', function (data) {
+        console.log(data);
+        TileContainer2.setState({ data: data });
+    });
+}, 5000);
 
 exports.default = App;
 },{"./Header":172,"./Menu":173,"./NameValue":174,"./Tile":175,"./TileContainer":176,"react":170,"react-dom":27}],172:[function(require,module,exports){
